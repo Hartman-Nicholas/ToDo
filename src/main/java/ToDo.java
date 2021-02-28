@@ -1,21 +1,42 @@
+import utils.WordWrap;
+
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class ToDo {
+public class ToDo implements Serializable {
 
+    private static final WordWrap wordWrap = new WordWrap();
     private String title;
     private String body;
     private GregorianCalendar dueDate;
     private boolean status;
     private String project;
 
+    @Serial
+    private final static long serialVersionUID = 1L;
+
 
     public ToDo(String title, String body, GregorianCalendar dueDate, boolean status, String project) {
         this.title = title;
-        this.body = body;
+        this.body = wordWrap.wrap(body);
         this.dueDate = dueDate;
         this.status = status;
         this.project = project;
+    }
+
+    public void viewTodo () {
+        System.out.println("Title: " + title);
+        System.out.println("Task: " + "\n" + body);
+        System.out.println("Project: " + project);
+        System.out.println("Due Date: " + dueDate.toString());
+        if (status) {
+            System.out.println("Status: Completed");
+        } else {
+            System.out.println("Status: Incomplete");
+        }
+
     }
 
     public String getTitle() {
@@ -31,7 +52,7 @@ public class ToDo {
     }
 
     public void setBody(String body) {
-        this.body = body;
+        this.body = wordWrap.wrap(body);
     }
 
     public Calendar getDueDate() {

@@ -1,7 +1,12 @@
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 
-public class ToDoList {
+public class ToDoList implements Serializable {
 
+    @Serial
+    private final static long serialVersionUID = 2L;
     private ArrayList <ToDo> todoList = new ArrayList<>();
 
     public void addToDo (ToDo todo) {
@@ -29,6 +34,30 @@ public class ToDoList {
     public void modifyBody (String title, int ind, String newBody) {
         if (findToDoInd(title).size()>0) {
             todoList.get(findToDoInd(title).get(ind)).setBody(newBody);
+        } else {
+            System.out.println("Title not found");
+        };
+    }
+
+    public void modifyDueDate (String title, int ind, GregorianCalendar dueDate) {
+        if (findToDoInd(title).size()>0) {
+            todoList.get(findToDoInd(title).get(ind)).setDueDate(dueDate);
+        } else {
+            System.out.println("Title not found");
+        };
+    }
+
+    public void modifyProject (String title, int ind, String newProject) {
+        if (findToDoInd(title).size()>0) {
+            todoList.get(findToDoInd(title).get(ind)).setProject(newProject);
+        } else {
+            System.out.println("Title not found");
+        };
+    }
+
+    public void modifyStatus (String title, int ind, boolean completed) {
+        if (findToDoInd(title).size()>0) {
+            todoList.get(findToDoInd(title).get(ind)).setStatus(completed);
         } else {
             System.out.println("Title not found");
         };
