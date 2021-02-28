@@ -9,6 +9,7 @@ public class ToDo {
     private boolean status;
     private String project;
 
+
     public ToDo(String title, String body, GregorianCalendar dueDate, boolean status, String project) {
         this.title = title;
         this.body = body;
