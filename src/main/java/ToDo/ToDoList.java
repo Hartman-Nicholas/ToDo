@@ -1,7 +1,11 @@
+package ToDo;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
+
 
 public class ToDoList implements Serializable {
 
@@ -65,5 +69,20 @@ public class ToDoList implements Serializable {
 
     public ArrayList<ToDo> getTodoList() {
         return todoList;
+    }
+
+    public void sortByDueDate () {
+        todoList.stream().sorted(Comparator.comparing(ToDo::getDueDate))
+                .forEach(x-> System.out.println(x.viewDueDate()));
+
+    }
+
+    public void sortByProject () {
+        todoList.stream().sorted(Comparator.comparing(ToDo::getProject))
+                .forEach(x-> System.out.println(x.getProject()));
+    }
+
+    public void removeToDo (int ind) {
+        todoList.remove(ind);
     }
 }

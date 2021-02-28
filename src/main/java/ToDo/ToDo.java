@@ -1,3 +1,5 @@
+package ToDo;
+
 import utils.WordWrap;
 
 import java.io.Serial;
@@ -30,7 +32,7 @@ public class ToDo implements Serializable {
         System.out.println("Title: " + title);
         System.out.println("Task: " + "\n" + body);
         System.out.println("Project: " + project);
-        System.out.println("Due Date: " + dueDate.toString());
+        System.out.println("Due Date: " + viewDueDate());
         if (status) {
             System.out.println("Status: Completed");
         } else {
@@ -54,9 +56,12 @@ public class ToDo implements Serializable {
     public void setBody(String body) {
         this.body = wordWrap.wrap(body);
     }
-
-    public Calendar getDueDate() {
+    public GregorianCalendar getDueDate() {
         return dueDate;
+    }
+
+    public String viewDueDate() {
+       return "" + dueDate.get(Calendar.YEAR) + "-" + dueDate.get(Calendar.MONTH) + "-" + dueDate.get(Calendar.DAY_OF_MONTH);
     }
 
     public void setDueDate(GregorianCalendar dueDate) {
