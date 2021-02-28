@@ -22,10 +22,17 @@ public class ToDoList {
         if (findToDoInd(title).size()>0) {
             todoList.get(findToDoInd(title).get(ind)).setTitle(newTitle);
         } else {
-            System.out.println("No title found");
+            System.out.println("Title not found");
         };
     }
 
+    public void modifyBody (String title, int ind, String newBody) {
+        if (findToDoInd(title).size()>0) {
+            todoList.get(findToDoInd(title).get(ind)).setBody(newBody);
+        } else {
+            System.out.println("Title not found");
+        };
+    }
 
     public ArrayList<ToDo> getTodoList() {
         return todoList;
