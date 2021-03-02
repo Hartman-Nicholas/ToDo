@@ -4,15 +4,13 @@ import utils.WordWrap;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class ToDo implements Serializable {
 
     private static final WordWrap wordWrap = new WordWrap();
     private String title;
     private String body;
-    private GregorianCalendar dueDate;
+    private String dueDate;
     private boolean status;
     private String project;
 
@@ -20,11 +18,11 @@ public class ToDo implements Serializable {
     private final static long serialVersionUID = 1L;
 
 
-    public ToDo(String title, String body, GregorianCalendar dueDate, boolean status, String project) {
+    public ToDo(String title, String body, String dueDate, String project) {
         this.title = title;
         this.body = wordWrap.wrap(body);
         this.dueDate = dueDate;
-        this.status = status;
+        this.status = false;
         this.project = project;
     }
 
@@ -32,7 +30,7 @@ public class ToDo implements Serializable {
         System.out.println("Title: " + title);
         System.out.println("Task: " + "\n" + body);
         System.out.println("Project: " + project);
-        System.out.println("Due Date: " + viewDueDate());
+        System.out.println("Due Date: " + dueDate);
         if (status) {
             System.out.println("Status: Completed");
         } else {
@@ -56,15 +54,13 @@ public class ToDo implements Serializable {
     public void setBody(String body) {
         this.body = wordWrap.wrap(body);
     }
-    public GregorianCalendar getDueDate() {
+
+    public String getDueDate() {
         return dueDate;
     }
 
-    public String viewDueDate() {
-       return "" + dueDate.get(Calendar.YEAR) + "-" + dueDate.get(Calendar.MONTH) + "-" + dueDate.get(Calendar.DAY_OF_MONTH);
-    }
 
-    public void setDueDate(GregorianCalendar dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
