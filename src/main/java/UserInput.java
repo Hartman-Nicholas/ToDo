@@ -18,14 +18,54 @@ public class UserInput {
     private static final String YES_NO_OR_QUIT = "Please enter Yes, No or Quit";
     private static final String NOT_A_VALID_CHOICE = "\"%s\" is not a valid choice.%n";
     private static final String NOT_A_VALID_NUMBER = "\"%s\" is not a valid number.%n";
-    private static final String ENTER_THE_TIME = "Please enter the time between 0-23: ";
+    private static final String ENTER_THE_INDEX = "Please enter the Index number of the task you want to modify:  ";
     private static final String ENTER_THE_DAY = "Please enter the Due date Format yyyy-mm-dd: ";
     private static final String OPERATION_ABORTED = "Operation aborted returning to main menu...";
     private static final Scanner scanner = new Scanner(System.in);
     private static ToDoList todoList = new ToDoList();
     private static final ASCIIArt todoArt = new ASCIIArt();
-//
-//
+
+
+    public static void printWelcome () {
+        System.out.println("\nPress");
+        System.out.println("\t 0 - To create new ToDo List.");
+        System.out.println("\t 1 - To Load an existing ToDo List.");
+        System.out.println("\t 2 - To quit the application");
+
+    }
+
+    public static void printInstructions() {
+        System.out.println("\nPress");
+        System.out.println("\t 0 - To print choice options.");
+        System.out.println("\t 1 - Add ToDo");
+        System.out.println("\t 2 - View ToDo List");
+        System.out.println("\t 3 - Modify ToDo");
+        System.out.println("\t 4 - To remove a ToDo");
+        System.out.println("\t 5 - To Save your ToDo List");
+        System.out.println("\t 6 - To return to home Screen");
+    }
+
+    public static void printViewList () {
+        System.out.println("\nPress");
+        System.out.println("\t 0 - View ToDoList.");
+        System.out.println("\t 1 - View sorted by dueDate.");
+        System.out.println("\t 2 - View sorted by Projects.");
+        System.out.println("\t 3 - View Incomplete ToDo's.");
+        System.out.println("\t 4 - View Complete ToDo's.");
+        System.out.println("\t 5 - To Leave view List.");
+    }
+
+    public static void printModifyList () {
+        System.out.println("\nPress");
+        System.out.println("\t 0 - Modify Title.");
+        System.out.println("\t 1 - Modify Body.");
+        System.out.println("\t 2 - Modify Due Date.");
+        System.out.println("\t 3 - Modify Project.");
+        System.out.println("\t 4 - Modify Status.");
+        System.out.println("\t 5 - To Leave Modify List.");
+    }
+
+
     public static void welcomeScreen() {
         boolean quit = false;
         int choice;
@@ -43,10 +83,10 @@ public class UserInput {
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
-                case 0 -> UserInput.optionsScreen();
+                case 0 -> optionsScreen();
                 case 1 -> {
 //                    UserInput.load();
-                    UserInput.optionsScreen();
+                    optionsScreen();
                 }
                 case 2 -> quit = true;
                 default -> System.out.println("Invalid Selection");
@@ -72,50 +112,17 @@ public class UserInput {
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
-                case 0 -> UserInput.printInstructions();
-                case 1 -> UserInput.addTodo();
-                case 2 -> UserInput.viewToDoList();
-                case 3 -> UserInput.addTodo();
-//                case 4 -> UserInput.viewToDoByProject();
-//                case 5 -> UserInput.searchForItem();
-//                case 6 -> UserInput.savePlanner();
-//                case 7 -> quit = true;
-                case 8 -> quit = true;
+                case 0 -> printInstructions();
+                case 1 -> addTodo();
+                case 2 -> viewToDoList();
+                case 3 -> modifyItem();
+                case 4 -> removeToDo();
+                case 5 -> {quit = true; printWelcome();}
                 default -> System.out.println("Invalid Selection");
             }
         } while (!quit);
     }
 
-    public static void printWelcome () {
-        System.out.println("\nPress");
-        System.out.println("\t 0 - To create new ToDo.");
-        System.out.println("\t 1 - To Load an existing ToDo.");
-        System.out.println("\t 2 - To quit the application");
-
-    }
-
-    public static void printInstructions() {
-        System.out.println("\nPress");
-        System.out.println("\t 0 - To print choice options.");
-        System.out.println("\t 1 - To view the Todo by Due Date");
-        System.out.println("\t 2 - To view the Todo by Project");
-        System.out.println("\t 3 - To add a ToDo to the ToDo List");
-        System.out.println("\t 4 - To modify a ToDo");
-        System.out.println("\t 5 - To remove a ToDo from the ToDo List");
-        System.out.println("\t 6 - To search for a Todo");
-        System.out.println("\t 7 - Save your ToDo List");
-        System.out.println("\t 8 - To quit the application.");
-    }
-
-    public static void printViewList () {
-        System.out.println("\nPress");
-        System.out.println("\t 0 - View ToDoList.");
-        System.out.println("\t 1 - View sorted by dueDate.");
-        System.out.println("\t 2 - View sorted by Projects.");
-        System.out.println("\t 3 - View Incomplete ToDo's.");
-        System.out.println("\t 4 - View Complete ToDo's.");
-        System.out.println("\t 5 - To Leave view List.");
-    }
 
     public static void addTodo() {
         String title;
@@ -147,7 +154,7 @@ public class UserInput {
         if(dueDate.equalsIgnoreCase("QUIT")) { return; }
 
         todoList.addToDo(new ToDo(title, body,dueDate,project));
-        System.out.printf("Task \"%s\" Successfully added.%n", title);
+        System.out.printf("ToDo \"%s\" Successfully added.%n", title);
         printInstructions();
     }
 
@@ -168,26 +175,121 @@ public class UserInput {
             choice = scanner.nextInt();
             scanner.nextLine();
             switch (choice) {
-                case 0 -> viewSortedByDueDate(todoList.sortByDueDate());
-                case 1 -> UserInput.addTodo();
-                case 2 -> UserInput.viewToDoList();
-//                case 4 -> UserInput.viewToDoByProject();
-//                case 5 -> UserInput.searchForItem();
-//                case 6 -> UserInput.savePlanner();
-//                case 7 -> quit = true;
-                case 8 -> quit = true;
+                case 0 -> viewBy(todoList.getTodoList());
+                case 1 -> viewBy(todoList.sortByDueDate());
+                case 2 -> viewBy(todoList.sortByProject());
+                case 3 -> viewBy(todoList.filterByIncomplete());
+                case 4 -> viewBy(todoList.filterByComplete());
+                case 5 -> {quit = true; printInstructions();}
                 default -> System.out.println("Invalid Selection");
             }
         } while (!quit);
     }
 
 
-    public static void viewToDoByDate() {
-        todoList.sortByDueDate();
+    private static void modifyToDoList (int index) {
+
+        boolean quit = false;
+        int choice;
+
+        printModifyList();
+        do {
+            System.out.println("Enter your choice: " );
+            while (!scanner.hasNextInt()) {
+                String input = scanner.next();
+                System.out.printf(NOT_A_VALID_NUMBER, input);
+                System.out.println("Enter your choice: ");
+            }
+
+            choice = scanner.nextInt();
+            scanner.nextLine();
+            switch (choice) {
+                case 0 -> modifyTitle(index);
+                case 1 -> modifyBody(index);
+                case 2 -> modifyProject(index);
+                case 3 -> modifyDueDate(index);
+                case 4 -> modifyStatus(index);
+                case 5 -> quit = true;
+                default -> System.out.println("Invalid Selection");
+            }
+        } while (!quit);
     }
 
-    public static void viewToDoByProject() {
-        todoList.sortByProject();
+    public static void modifyTitle (int index) {
+        String oldTitle = todoList.getTodoList().get(index).getTitle();
+        String title;
+        System.out.println("Please enter new title: ");
+        title = setString();
+        if (title.equalsIgnoreCase("QUIT")) {return; }
+        todoList.getTodoList().get(index).setTitle(title);
+        System.out.printf("Todo \"%s\" Successfully modified to \"%s\" .%n", oldTitle, title);
+        printModifyList();
+    }
+
+
+    public static void modifyBody (int index) {
+        String oldBody = todoList.getTodoList().get(index).getBody();
+        String body;
+        System.out.println("Please enter new body: ");
+        body = setString();
+        if (body.equalsIgnoreCase("QUIT")) {return; }
+        todoList.getTodoList().get(index).setBody(body);
+        System.out.printf("Todo \"%s\" Successfully modified to \"%s\" .%n", oldBody, body);
+        printModifyList();
+    }
+
+    public static void modifyProject (int index) {
+        String oldProject = todoList.getTodoList().get(index).getProject();
+        String project;
+        System.out.println("Please enter new Project: ");
+        project = setString();
+        if (project.equalsIgnoreCase("QUIT")) {return; }
+        todoList.getTodoList().get(index).setBody(project);
+        System.out.printf("Todo \"%s\" Successfully modified to \"%s\" .%n", oldProject, project);
+        printModifyList();
+    }
+
+    public static void modifyDueDate (int index) {
+        String oldDueDate = todoList.getTodoList().get(index).getDueDate();
+        String dueDate;
+        System.out.println("Please enter new Due Date: ");
+        dueDate = setDueDate();
+        todoList.getTodoList().get(index).setDueDate(dueDate);
+        System.out.printf("Todo \"%s\" Successfully modified to \"%s\" .%n", oldDueDate, dueDate);
+        printModifyList();
+    }
+
+    public static void modifyStatus (int index) {
+        boolean oldStatus = todoList.getTodoList().get(index).isStatus();
+        boolean status;
+        System.out.println("1. for Complete: ");
+        System.out.println("2. for InComplete: ");
+
+        status = setStatus();
+        todoList.getTodoList().get(index).setStatus(status);
+        System.out.printf("Todo \"%s\" Successfully modified to \"%s\" .%n", oldStatus, status);
+        printModifyList();
+    }
+
+    private static boolean setStatus () {
+        int index;
+        do{
+            System.out.println(ENTER_THE_INDEX);
+            while (!scanner.hasNextInt()) {
+                String input = scanner.next();
+                System.out.printf(NOT_A_VALID_NUMBER, input);
+                System.out.println(ENTER_THE_INDEX);
+            }
+            index = scanner.nextInt();
+
+            scanner.nextLine();
+            if (index < 1 || index > 2 ) {
+                System.out.printf(NOT_A_VALID_CHOICE, index);
+            }
+        } while(index < 1 || index > 2);
+
+        return index == 1;
+
     }
 
     public static String setString () {
@@ -200,6 +302,31 @@ public class UserInput {
         }
         return string;
     }
+
+    public static int setArrayInteger () {
+        int index;
+        do{
+            System.out.println(ENTER_THE_INDEX);
+            while (!scanner.hasNextInt()) {
+                String input = scanner.next();
+                if (input.equalsIgnoreCase("QUIT")) {
+                    System.out.println(OPERATION_ABORTED);
+                    printInstructions();
+                    return -1;
+                }
+                System.out.printf(NOT_A_VALID_NUMBER, input);
+                System.out.println(ENTER_THE_INDEX);
+            }
+            index = scanner.nextInt()-1;
+
+            scanner.nextLine();
+            if (index < 0 || index >= todoList.getTodoList().size() ) {
+                System.out.printf(NOT_A_VALID_CHOICE, index);
+            }
+        } while(index < 0 || index >= todoList.getTodoList().size());
+        return index;
+    }
+
 
     private static void viewSameToDo (ArrayList<Integer> index) {
         int maxSize = 20;
@@ -232,7 +359,7 @@ public class UserInput {
         }
     }
 
-    private static void viewSortedByDueDate (ArrayList<ToDo> toDoList) {
+    private static void viewBy (ArrayList<ToDo> toDoList) {
         int maxSize = 20;
         int count = 1;
         System.out.printf("%-10s%-22s%-22s%-22s%-22s%-22s\n","Index:","Title:","Body:", "Project:", "Due Date:", "Status:");
@@ -262,13 +389,43 @@ public class UserInput {
             count++;
         }
 
-        }
+    }
 
 
 
+    public static void modifyItem() {
+        int index;
+
+        viewBy(todoList.getTodoList());
+        index = setArrayInteger();
+        if(index < 0) { return; }
+        modifyToDoList(index);
+        printInstructions();
+    }
 
 
-//
+
+    public static void removeToDo () {
+        String title;
+        int index;
+
+        viewBy(todoList.getTodoList());
+        index = setArrayInteger();
+        if(index < 0) { return; }
+
+
+        title = todoList.getTodoList().get(index).getTitle();
+        if (!continueCheck()) {return;}
+        todoList.removeToDo(index);
+        System.out.printf("Todo \"%s\" Successfully removed .%n", title);
+        printInstructions();
+
+
+    }
+
+
+
+    //
 //    public static void load () {
 //
 //        String filePath = "BobsPlan.txt";
@@ -281,70 +438,8 @@ public class UserInput {
 //    }
 
 
-//
-//    public static void modifyItem() {
-//        String day;
-//        int time;
-//        String task;
-//        boolean flag;
-//        String oldTask;
-//
-//
-//        day = setDay();
-//        if(day.equals("QUIT")) { return; }
-//        time = setTime();
-//        if(time < 0) { return; }
-//
-//
-//
-//        if(planner.checkTask(time, day)) {
-//            oldTask = planner.findTask(time,day);
-//            System.out.println(FOUND_TASK + oldTask );
-//
-//            flag = continueCheck();
-//            if (!flag) { return; }
-//
-//            System.out.println("Please enter new task name: ");
-//            task = scanner.nextLine();
-//            planner.addTask(time, day, task);
-//            System.out.printf("Task \"%s\" Successfully updated.%n", oldTask);
-//
-//        } else {
-//            System.out.println("Task not found");
-//        }
-//        printInstructions();
-//
-//    }
-//
-//    public static void removeItem () {
-//
-//        String day;
-//        int time;
-//        boolean flag;
-//        String oldTask;
-//
-//        day = setDay();
-//        if(day.equals("QUIT")) { return; }
-//        time = setTime();
-//        if(time < 0) { return; }
-//
-//
-//        if(planner.checkTask(time, day)) {
-//            oldTask = planner.findTask(time,day);
-//            System.out.println(FOUND_TASK + oldTask );
-//
-//            flag = continueCheck();
-//            if (!flag) { return; }
-//
-//            planner.removeTask(time, day);
-//            System.out.printf("Task \"%s\" Successfully deleted.%n", oldTask);
-//
-//        } else {
-//            System.out.println("You have no tasks to Delete please check your weekly planner.");
-//        }
-//        printInstructions();
-//
-//    }
+
+
 //
 //    public static void searchForItem () {
 //        String day;
@@ -417,6 +512,7 @@ public class UserInput {
             }
         } while (true);
     }
+
 
     private static String setDueDate() {
         String dueDate;
