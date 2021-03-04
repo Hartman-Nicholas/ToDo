@@ -9,7 +9,7 @@ public class ToDoList implements Serializable {
 
     @Serial
     private final static long serialVersionUID = 2L;
-    private ArrayList <ToDo> todoList = new ArrayList<>();
+    private final ArrayList <ToDo> todoList = new ArrayList<>();
 
     public void addToDo (ToDo todo) {
         todoList.add(todo);
@@ -61,6 +61,10 @@ public class ToDoList implements Serializable {
 
     public void removeToDo (int ind) {
         todoList.remove(ind);
+    }
+
+    public boolean checkFile (String filePath) {
+        return filePath.endsWith(".txt");
     }
 
     public void saveToDoList (String filePath, ToDoList toDoList) throws IOException {
