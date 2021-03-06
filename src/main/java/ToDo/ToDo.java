@@ -17,6 +17,13 @@ public class ToDo implements Serializable {
     @Serial
     private final static long serialVersionUID = 1L;
 
+    public ToDo(String title, String body, String dueDate, boolean status, String project) {
+        this.title = title;
+        this.body = wordWrap.wrap(body);
+        this.dueDate = dueDate;
+        this.status = status;
+        this.project = project;
+    }
 
     public ToDo(String title, String body, String dueDate, String project) {
         this.title = title;
@@ -28,7 +35,7 @@ public class ToDo implements Serializable {
 
     public void viewTodo () {
         System.out.println("Title: " + title);
-        System.out.println("Task: " + "\n" + body);
+        System.out.println("ToDo: " + "\n" + body);
         System.out.println("Project: " + project);
         System.out.println("Due Date: " + dueDate);
         if (status) {

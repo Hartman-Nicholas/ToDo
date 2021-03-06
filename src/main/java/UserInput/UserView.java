@@ -5,6 +5,13 @@ import java.util.ArrayList;
 
 public class UserView {
 
+    private static final ArrayList<ToDo> getTodo = UserInput.getTodoList().getTodoList();
+    private static final ArrayList<ToDo> sortByDueDate = UserInput.getTodoList().getTodoList();
+    private static final ArrayList<ToDo> sortByProject = UserInput.getTodoList().getTodoList();
+    private static final ArrayList<ToDo> filterByIncomplete = UserInput.getTodoList().getTodoList();
+    private static final ArrayList<ToDo> filterByComplete = UserInput.getTodoList().getTodoList();
+
+
 
     public static void printViewList () {
         System.out.println("\nView List");
@@ -26,11 +33,31 @@ public class UserView {
             choice = UserInput.enterChoice();
 
             switch (choice) {
-                case 0 -> viewBy(UserInput.getTodoList().getTodoList());
-                case 1 -> viewBy(UserInput.getTodoList().sortByDueDate());
-                case 2 -> viewBy(UserInput.getTodoList().sortByProject());
-                case 3 -> viewBy(UserInput.getTodoList().filterByIncomplete());
-                case 4 -> viewBy(UserInput.getTodoList().filterByComplete());
+                case 0 -> {
+                    viewBy(getTodo);
+                    viewToDo(getTodo);
+                    printViewList();
+                }
+                case 1 -> {
+                    viewBy(sortByDueDate);
+                    viewToDo(sortByDueDate);
+                    printViewList();
+                }
+                case 2 -> {
+                    viewBy(sortByProject);
+                    viewToDo(sortByProject);
+                    printViewList();
+                }
+                case 3 -> {
+                    viewBy(filterByIncomplete);
+                    viewToDo(filterByIncomplete);
+                    printViewList();
+                }
+                case 4 -> {
+                    viewBy(filterByComplete);
+                    viewToDo(filterByComplete);
+                    printViewList();
+                }
                 case 5 -> {quit = true; UserInput.printInstructions();}
                 default -> System.out.println("Invalid Selection");
             }
@@ -70,6 +97,19 @@ public class UserView {
         }
 
     }
+
+    public static void viewToDo (ArrayList<ToDo> toDoList) {
+        int index;
+        index = UserInput.setArrayInteger();
+        if (index < 0) {
+            return;
+        }
+        toDoList.get(index).viewTodo();
+
+    }
+
+
+
 
 
 

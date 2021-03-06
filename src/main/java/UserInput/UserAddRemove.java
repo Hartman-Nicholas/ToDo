@@ -50,6 +50,7 @@ public class UserAddRemove {
 
 
         title = UserInput.getTodoList().getTodoList().get(index).getTitle();
+        System.out.printf("You are about to remove the following Todo \"%s\" .%n", title);
         if (!UserInput.continueCheck()) {return;}
         UserInput.getTodoList().removeToDo(index);
         System.out.printf("Todo \"%s\" Successfully removed .%n", title);

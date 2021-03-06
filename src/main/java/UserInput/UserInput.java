@@ -18,7 +18,7 @@ public class UserInput {
     private static final String PLEASE_ENTER_FILE = "Please enter your file name or quit to exit: ";
     private static final String NOT_A_VALID_CHOICE = "\"%s\" is not a valid choice.%n";
     private static final String NOT_A_VALID_NUMBER = "\"%s\" is not a valid number.%n";
-    private static final String ENTER_THE_INDEX = "Please enter the Index number of the task you want to modify:  ";
+    private static final String ENTER_THE_INDEX = "Please enter the Index number of the toDo:  ";
     private static final String ENTER_THE_DAY = "Please enter the Due date Format yyyy-mm-dd: ";
     private static final String OPERATION_ABORTED = "Operation aborted returning to main menu...";
     private static final Scanner scanner = new Scanner(System.in);
@@ -113,9 +113,9 @@ public class UserInput {
             if (filePath.equalsIgnoreCase("QUIT")) {
                 return;
             }
-            String appendedFile = todoList.checkFile(filePath) ? filePath : filePath + ".txt";
+            String appendedFile = checkFile(filePath) ? filePath : filePath + ".txt";
             try {
-                todoList = todoList.loadToDoList(appendedFile);
+                todoList = UserSaveAndLoad.loadToDoList(appendedFile);
                 return;
             } catch (FileNotFoundException e) {
                 System.out.println("File not found");
@@ -123,6 +123,8 @@ public class UserInput {
                 System.out.println("Error: " + e);
             } catch (ClassNotFoundException e) {
                 System.out.println("Error: Class not found");
+            } catch (Exception e) {
+                System.out.println("Incorrect file format please load a ToDoList");
             }
         } while (true);
     }
@@ -139,7 +141,7 @@ public class UserInput {
                 return;
             }
 
-            String appendedFile = todoList.checkFile(filePath) ? filePath : filePath + ".txt";
+            String appendedFile = checkFile(filePath) ? filePath : filePath + ".txt";
 
             File checkFile = new File (appendedFile);
 
@@ -152,7 +154,7 @@ public class UserInput {
 
             try {
 
-                todoList.saveToDoList(appendedFile, todoList);
+                UserSaveAndLoad.saveToDoList(appendedFile, todoList);
                 System.out.println("Your planner has been saved successfully");
                 break;
             } catch (FileNotFoundException e) {
@@ -230,7 +232,7 @@ public class UserInput {
 
             scanner.nextLine();
             if (index < 0 || index >= todoList.getTodoList().size() ) {
-                System.out.printf(NOT_A_VALID_CHOICE, index);
+                System.out.printf(NOT_A_VALID_CHOICE, index+1);
             }
         } while(index < 0 || index >= todoList.getTodoList().size());
         return index;
@@ -270,6 +272,10 @@ public class UserInput {
         }
 
         return valid;
+    }
+
+    private static boolean checkFile (String filePath) {
+        return filePath.endsWith(".txt");
     }
 
 

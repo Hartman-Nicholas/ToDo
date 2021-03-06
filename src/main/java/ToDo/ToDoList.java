@@ -63,37 +63,8 @@ public class ToDoList implements Serializable {
         todoList.remove(ind);
     }
 
-    public boolean checkFile (String filePath) {
-        return filePath.endsWith(".txt");
-    }
-
-    public void saveToDoList (String filePath, ToDoList toDoList) throws IOException {
-
-        File saveState = new File(filePath);
-        FileOutputStream fos = new FileOutputStream(saveState);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-        oos.writeObject(toDoList);
-
-        oos.close();
-
-    }
-
-    public ToDoList loadToDoList (String filePath) throws IOException, ClassNotFoundException {
-
-        File saveState = new File(filePath);
-        FileInputStream fis = new FileInputStream(saveState);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-
-        ToDoList toDoList = (ToDoList) ois.readObject();
-
-        ois.close();
-
-        return toDoList;
 
 
-
-    }
 
 
 
