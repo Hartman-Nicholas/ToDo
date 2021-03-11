@@ -78,9 +78,7 @@ class UserSaveAndLoadTest {
         testList.addToDo(test2);
         testList.addToDo(test3);
 
-        Assertions.assertThrows(IOException.class, () -> {
-            UserSaveAndLoad.loadToDoList("T/tes.txt");
-        });
+        Assertions.assertThrows(IOException.class, () -> UserSaveAndLoad.loadToDoList("T/tes.txt"));
     }
 
     @Test
