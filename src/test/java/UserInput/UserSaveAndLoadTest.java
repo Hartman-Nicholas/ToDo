@@ -9,16 +9,23 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserSaveAndLoadTest {
 
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+    LocalDate localDate = LocalDate.parse("1986/12/20", formatter);
+    LocalDate localDate1 = LocalDate.parse("1980/12/20", formatter);
+    LocalDate localDate2 = LocalDate.parse("1990/12/20", formatter);
+
     @Test
     void saveToDoList() throws Exception {
-        ToDo test = new ToDo("Test", "This is a test", "2021-12-02",true,  "David" );
-        ToDo test2 = new ToDo("Test 2", "This is a duplicate test 2", "2021-1-06", false, "Nicholas" );
-        ToDo test3 = new ToDo("Test 3", "This is a duplicate test 3", "2021-5-07", true, "Andrew" );
+        ToDo test = new ToDo("Test", "This is a test", localDate, "David" );
+        ToDo test2 = new ToDo("Test 2", "This is a duplicate test 2", localDate1, "Nicholas" );
+        ToDo test3 = new ToDo("Test 3", "This is a duplicate test 3", localDate2,  "Andrew" );
 
         ToDoList testList = new ToDoList();
         testList.addToDo(test);
@@ -34,9 +41,9 @@ class UserSaveAndLoadTest {
 
     @Test
     void saveToDoList_Exception() {
-        ToDo test = new ToDo("Test", "This is a test", "2021-12-02",true,  "David" );
-        ToDo test2 = new ToDo("Test 2", "This is a duplicate test 2", "2021-1-06", false, "Nicholas" );
-        ToDo test3 = new ToDo("Test 3", "This is a duplicate test 3", "2021-5-07", true, "Andrew" );
+        ToDo test = new ToDo("Test", "This is a test", localDate, "David" );
+        ToDo test2 = new ToDo("Test 2", "This is a duplicate test 2", localDate1,  "Nicholas" );
+        ToDo test3 = new ToDo("Test 3", "This is a duplicate test 3", localDate2,  "Andrew" );
 
         ToDoList testList = new ToDoList();
         testList.addToDo(test);
@@ -49,9 +56,9 @@ class UserSaveAndLoadTest {
 
     @Test
     void loadToDoList() throws Exception {
-        ToDo test = new ToDo("Test", "This is a test", "2021-12-02",true,  "David" );
-        ToDo test2 = new ToDo("Test 2", "This is a duplicate test 2", "2021-1-06", false, "Nicholas" );
-        ToDo test3 = new ToDo("Test 3", "This is a duplicate test 3", "2021-5-07", true, "Andrew" );
+        ToDo test = new ToDo("Test", "This is a test", localDate,  "David" );
+        ToDo test2 = new ToDo("Test 2", "This is a duplicate test 2", localDate1,  "Nicholas" );
+        ToDo test3 = new ToDo("Test 3", "This is a duplicate test 3", localDate2, "Andrew" );
 
         ToDoList testList = new ToDoList();
         testList.addToDo(test);
@@ -69,9 +76,9 @@ class UserSaveAndLoadTest {
     @Test
     void loadToDoList_IOException() throws IOException, ClassNotFoundException {
 
-        ToDo test = new ToDo("Test", "This is a test", "2021-12-02",true,  "David" );
-        ToDo test2 = new ToDo("Test 2", "This is a duplicate test 2", "2021-1-06", false, "Nicholas" );
-        ToDo test3 = new ToDo("Test 3", "This is a duplicate test 3", "2021-5-07", true, "Andrew" );
+        ToDo test = new ToDo("Test", "This is a test", localDate,  "David" );
+        ToDo test2 = new ToDo("Test 2", "This is a duplicate test 2", localDate1,  "Nicholas" );
+        ToDo test3 = new ToDo("Test 3", "This is a duplicate test 3", localDate2,  "Andrew" );
 
         ToDoList testList = new ToDoList();
         testList.addToDo(test);

@@ -19,7 +19,7 @@ public class UserSaveAndLoad {
 
     }
 
-    public static ToDoList loadToDoList (String filePath) throws IOException, ClassNotFoundException, Exception {
+    public static ToDoList loadToDoList (String filePath) throws Exception {
 
         File saveState = new File(filePath);
         FileInputStream fis = new FileInputStream(saveState);
@@ -32,9 +32,6 @@ public class UserSaveAndLoad {
         return toDoList;
 
     }
-
-
-
 
 
 }

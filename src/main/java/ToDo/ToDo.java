@@ -4,6 +4,7 @@ import utils.WordWrap;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 
 
@@ -12,10 +13,9 @@ public class ToDo implements Serializable {
     private static final WordWrap wordWrap = new WordWrap();
     private String title;
     private String body;
-    private String dueDate;
+    private LocalDate dueDate;
     private boolean status;
     private String project;
-
     @Serial
     private final static long serialVersionUID = 1L;
 
@@ -25,20 +25,10 @@ public class ToDo implements Serializable {
      * @param body sets the body of the ToDo task with word wrap formatting set to
      *             limit the output to 80 Characters per line.
      * @param dueDate sets the dueDate of the ToDo task.
-     * @param status sets the status of the Todo.
      * @param project sets the project of the ToDo task.
      */
 
-
-    public ToDo(String title, String body, String dueDate, boolean status, String project) {
-        this.title = title;
-        this.body = wordWrap.wrap(body);
-        this.dueDate = dueDate;
-        this.status = status;
-        this.project = project;
-    }
-
-    public ToDo(String title, String body, String dueDate, String project) {
+    public ToDo(String title, String body, LocalDate dueDate, String project) {
         this.title = title;
         this.body = wordWrap.wrap(body);
         this.dueDate = dueDate;
@@ -61,31 +51,15 @@ public class ToDo implements Serializable {
         } else {
             System.out.println("Status: Incomplete");
         }
-
     }
-
-    /**
-     * Gets the title from the ToDo object.
-     * @return the String value of the title from the ToDo object.
-     */
 
     public String getTitle() {
         return title;
     }
 
-    /**
-     * Sets the title on the ToDo object.
-     * @param title String value to change the new title to.
-     */
-
     public void setTitle(String title) {
         this.title = title;
     }
-
-    /**
-     * Gets the body from the ToDo object.
-     * @return String value of the body on the ToDo object.
-     */
 
     public String getBody() {
         return body;
@@ -101,21 +75,15 @@ public class ToDo implements Serializable {
         this.body = wordWrap.wrap(body);
     }
 
-    /**
-     * Gets the due date from the ToDo object.
-     * @return The due date
-     */
-
-    public String getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-
-    public void setDueDate(String dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
