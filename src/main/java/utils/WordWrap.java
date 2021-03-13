@@ -20,7 +20,6 @@ package utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
 public class WordWrap {
 
     private final static int WRAP_LENGTH = 80;
@@ -30,6 +29,8 @@ public class WordWrap {
 
 
     /**
+     * Method that wraps a string in the console to a WRAP_LENGTH of
+     * 80 characters. Setup for readability in the console.
      *
      * @param str  the String to be word wrapped, may be null
 

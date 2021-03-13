@@ -4,13 +4,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
- * @author code.factory
+ * Code to Draw using ASCIIArt in the console.
  *
+ * @author code.factory
  */
 
 public class ASCIIArt {
 
-    public void drawArt () {
+    public void drawArt (String draw) {
 
         int width = 100;
         int height = 30;
@@ -22,7 +23,7 @@ public class ASCIIArt {
         Graphics2D graphics = (Graphics2D) g;
         graphics.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
         RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        graphics.drawString("TODO", 10, 20);
+        graphics.drawString(draw, 10, 20);
 
 
         for (int y = 0; y < height; y++) {
