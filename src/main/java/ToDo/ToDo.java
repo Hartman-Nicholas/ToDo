@@ -10,6 +10,7 @@ import java.time.LocalDate;
 
 public class ToDo implements Serializable {
 
+    // Used to format Strings that are longer than 80 characters to display on multilines.
     private static final WordWrap wordWrap = new WordWrap();
     private String title;
     private String body;

@@ -18,10 +18,18 @@ public class ToDoList implements Serializable {
         todoList.add(todo);
     }
 
-
     public ArrayList<ToDo> getTodoList() {
         return todoList;
     }
+
+    /**
+     * Sort the todoList ArrayList in ascending order.
+     * @param index parameter for setting the type of sort
+     *              [0] sort by Due Date.
+     *              [1] sort by Project.
+     * @return the sorted todoList.
+     */
+
 
     public List<ToDo> sortBy (int index) {
 
@@ -31,6 +39,14 @@ public class ToDoList implements Serializable {
             }
             return todoList;
     }
+
+    /**
+     * Filters the todoList ArrayList by either complete or incomplete tasks
+     * @param index parameter for setting the filter type.
+     *              [0] Filter by completed tasks.
+     *              [1] Filter by incompleted tasks.
+     * @return a new List that contains the filtered items.
+     */
 
     public List<ToDo> filterBy (int index) {
         List<ToDo> filterList = new ArrayList<>();
@@ -50,7 +66,6 @@ public class ToDoList implements Serializable {
      * Finds ToDo Tasks either by project[0] or Title[1]
      * @param index [0] searches for all elements by Title.
      *              [1] searches for all elements by Project.
-     *              [2] searches for all elements by dueDate.
      * @param data value to search by.
      * @return List of found results.
      */
@@ -75,6 +90,20 @@ public class ToDoList implements Serializable {
     public void removeToDo (int index) {
         todoList.remove(index);
     }
+
+    /**
+     * Takes a ToDo object and allows the user to modify selected fields.
+     * @param todo object to be modified.
+     * @param index Index number determines which field will be modified
+     *              [0] modify Title
+     *              [1] modify Body
+     *              [2] modify Project
+     *              [3] modify DueDate
+     *              [4] modify Status
+     *
+     * @param data information to set the new field to.
+     * @return the old data that was replaced is returned for display purposes.
+     */
 
     public Object modify (ToDo todo, int index, Object data) {
         String oldTitle = todo.getTitle();

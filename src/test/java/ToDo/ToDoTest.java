@@ -13,7 +13,6 @@ class ToDoTest {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
     LocalDate localDate = LocalDate.parse("1986/12/20", formatter);
 
-
     @Test
     void getTitle() {
         ToDo test = new ToDo("Test", "This is a test", localDate,  "David" );
@@ -48,18 +47,17 @@ class ToDoTest {
 
     @Test
     void setDueDate() throws ParseException {
-
-
-
         ToDo test = new ToDo("Test", "This is a test",localDate ,  "David" );
-        test.setDueDate(localDate);
-        assertEquals("2021/03/14", test.getDueDate());
+
+        LocalDate updateDate = LocalDate.parse("1988/12/20", formatter);
+        test.setDueDate(updateDate);
+        assertEquals(updateDate, test.getDueDate());
     }
 
     @Test
-    void isStatus() {
+    void getStatus() {
         ToDo test = new ToDo("Test", "This is a test", localDate,  "David" );
-        assertTrue(test.getStatus());
+        assertFalse(test.getStatus());
     }
 
     @Test

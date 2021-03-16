@@ -32,9 +32,9 @@ class UserSaveAndLoadTest {
         testList.addToDo(test2);
         testList.addToDo(test3);
 
-        UserSaveAndLoad.saveToDoList("Test.txt", testList);
+        UserSaveAndLoad.saveToDoList("Test.toDo", testList);
 
-        ToDoList loadList = UserSaveAndLoad.loadToDoList("Test.txt");
+        ToDoList loadList = UserSaveAndLoad.loadToDoList("Test.toDo");
 
         assertEquals(testList.getTodoList().get(0).getTitle(), loadList.getTodoList().get(0).getTitle());
     }
@@ -51,7 +51,7 @@ class UserSaveAndLoadTest {
         testList.addToDo(test3);
 
 
-        Assertions.assertThrows(IOException.class, () -> UserSaveAndLoad.saveToDoList("T/tes.txt", testList));
+        Assertions.assertThrows(IOException.class, () -> UserSaveAndLoad.saveToDoList("T/tes.toDo", testList));
     }
 
     @Test
@@ -65,9 +65,9 @@ class UserSaveAndLoadTest {
         testList.addToDo(test2);
         testList.addToDo(test3);
 
-        UserSaveAndLoad.saveToDoList("Test.txt", testList);
+        UserSaveAndLoad.saveToDoList("Test.toDo", testList);
 
-        ToDoList loadList = UserSaveAndLoad.loadToDoList("Test.txt");
+        ToDoList loadList = UserSaveAndLoad.loadToDoList("Test.toDo");
 
         assertEquals(testList.getTodoList().get(0).getTitle(), loadList.getTodoList().get(0).getTitle());
 
@@ -85,14 +85,14 @@ class UserSaveAndLoadTest {
         testList.addToDo(test2);
         testList.addToDo(test3);
 
-        Assertions.assertThrows(IOException.class, () -> UserSaveAndLoad.loadToDoList("T/tes.txt"));
+        Assertions.assertThrows(IOException.class, () -> UserSaveAndLoad.loadToDoList("T/tes.toDo"));
     }
 
     @Test
     void loadToDoList_ClassNotFoundException() throws Exception {
 
         String test = "Test";
-        File saveState = new File("Test_Exception.txt");
+        File saveState = new File("Test_Exception.toDo");
         FileOutputStream fos = new FileOutputStream(saveState);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
@@ -100,7 +100,7 @@ class UserSaveAndLoadTest {
 
         oos.close();
 
-        Assertions.assertThrows(Exception.class, () -> UserSaveAndLoad.loadToDoList("Test_Exception.txt"));
+        Assertions.assertThrows(Exception.class, () -> UserSaveAndLoad.loadToDoList("Test_Exception.toDo"));
     }
 
 
