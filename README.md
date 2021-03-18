@@ -65,7 +65,7 @@ On succesfully running the application the user is greeted with the following Ho
 
 #### Home Screen
 
-![HomeScreen](/Users/hartn/Documents/Projects/ToDo-App/img/HomeScreen.png)
+![HomeScreen](/img/HomeScreen.png)
 
 0. Create a new ToDo List if there is currently a ToDo List loaded it will create a new list and all inputs from the old list will be lost if not saved. If there is no list loaded makes a new list.
 
@@ -81,7 +81,7 @@ On succesfully running the application the user is greeted with the following Ho
 
 ##### Options Screen
 
-![OptionsMenu](/Users/hartn/Documents/Projects/ToDo-App/img/OptionsMenu.png)
+![OptionsMenu](/img/OptionsMenu.png)
 
 
 
@@ -89,13 +89,13 @@ The option page is loaded from selecting either 0 or 1 from the home page. The o
 
 ###### Adding a Todo
 
-![AddingTodo](/Users/hartn/Documents/Projects/ToDo-App/img/AddingTodo.png)
+![AddingTodo](/img/AddingTodo.png)
 
 From the options menu select zero. You will then be prompted for a serious of inputs in order to create a new ToDo task.
 
 ###### View a Todo
 
-![ViewTodo](/Users/hartn/Documents/Projects/ToDo-App/img/ViewTodo.png)
+![ViewTodo](/img/ViewTodo.png)
 
 From the options menu select one. 
 
@@ -105,7 +105,7 @@ On selecting one of the options you are then presented with the appropriate ToDo
 
 ###### Modify a Todo
 
-![modifyToDo](/Users/hartn/Documents/Projects/ToDo-App/img/modifyToDo.png)
+![modifyToDo](/img/modifyToDo.png)
 
 From the options menu select 2. 
 
@@ -117,7 +117,7 @@ Finally before you leave the modify list you are able to view your updated ToDo 
 
 ###### Find ToDo
 
-![findToDo](/Users/hartn/Documents/Projects/ToDo-App/img/findToDo.png)
+![findToDo](/img/findToDo.png)
 
 From the options menu select 3.
 
@@ -127,7 +127,7 @@ Then enter your search criteria and a list of ToDo's that match the criteria is 
 
 ###### Remove ToDo
 
-![RemoveToDo](/Users/hartn/Documents/Projects/ToDo-App/img/RemoveToDo.png)
+![RemoveToDo](/img/RemoveToDo.png)
 
 From the options menu select 4
 
