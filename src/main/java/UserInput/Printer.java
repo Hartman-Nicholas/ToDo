@@ -19,7 +19,7 @@ public class Printer {
     }
 
     public static void printInstructions() {
-        System.out.println("\nTodo Page");
+        System.out.println("\nOptions Menu");
         System.out.println("\t 0 - Add ToDo");
         System.out.println("\t 1 - View ToDo List");
         System.out.println("\t 2 - Modify ToDo");
