@@ -79,7 +79,7 @@ On succesfully running the application the user is greeted with the following Ho
 
    
 
-##### Options Screen
+#### Options Screen
 
 ![OptionsMenu](/img/OptionsMenu.png)
 
@@ -87,13 +87,13 @@ On succesfully running the application the user is greeted with the following Ho
 
 The option page is loaded from selecting either 0 or 1 from the home page. The option menu gives you access to the main functionality of the ToDo App. 
 
-###### Adding a Todo
+#### Adding a Todo
 
 ![AddingTodo](/img/AddingTodo.png)
 
 From the options menu select zero. You will then be prompted for a serious of inputs in order to create a new ToDo task.
 
-###### View a Todo
+#### View a Todo
 
 ![ViewTodo](/img/ViewTodo.png)
 
@@ -103,7 +103,7 @@ You will then be presented with the view options list which provides you with va
 
 On selecting one of the options you are then presented with the appropriate ToDo List. If you would like to view a detailed description of the ToDo you then enter the index number of the ToDo you would like to view or quit to exit.
 
-###### Modify a Todo
+#### Modify a Todo
 
 ![modifyToDo](/img/modifyToDo.png)
 
@@ -115,7 +115,7 @@ Upon selecting a ToDo to modify you are then present with the modification List 
 
 Finally before you leave the modify list you are able to view your updated ToDo to view the changes you have made.
 
-###### Find ToDo
+#### Find ToDo
 
 ![findToDo](/img/findToDo.png)
 
@@ -125,7 +125,7 @@ You then choose if you would like to search by title or project.
 
 Then enter your search criteria and a list of ToDo's that match the criteria is returned.
 
-###### Remove ToDo
+#### Remove ToDo
 
 ![RemoveToDo](/img/RemoveToDo.png)
 
