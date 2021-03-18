@@ -1,6 +1,3 @@
----
-typora-root-url: ../img
----
 
 # README - TODO Application
 
@@ -39,7 +36,7 @@ The user can then view, modify, and delete a ToDo, they are also able to mark th
 
 3. Navigate to project folder, src, main, java and Main.java as per the tree below
 
-![FolderTree](/Users/hartn/Documents/Projects/ToDo-App/img/FolderTree.png)
+![FolderTree](/img/FolderTree.png)
 
 4. Run the Main.java file using the IDE's run command.
 
