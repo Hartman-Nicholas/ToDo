@@ -319,7 +319,7 @@ public class UserInput {
             try { filePath = setUserStringInput(); }
             catch (QuitException e) { return; }
 
-            String appendedFile = checkFilePathEndsWith(filePath) ? filePath : filePath + ".toDo";
+            String appendedFile = Validators.checkFilePathEndsWithToDo(filePath) ? filePath : filePath + ".toDo";
 
             File checkFile = new File (appendedFile);
 
@@ -351,7 +351,7 @@ public class UserInput {
             catch (QuitException e) { return false; }
 
 
-            String appendedFile = checkFilePathEndsWith(filePath) ? filePath : filePath + ".toDo";
+            String appendedFile = Validators.checkFilePathEndsWithToDo(filePath) ? filePath : filePath + ".toDo";
             try {
                 todoList = UserSaveAndLoad.loadToDoList(appendedFile);
                 return true;
@@ -391,27 +391,27 @@ public class UserInput {
         }
     }
 
-    private static boolean checkFilePathEndsWith(String filePath) {
-        return filePath.endsWith(".toDo");
-    }
+
 
 
     /*********************************************  HELPER SECTIONS ***************************************************/
 
 
     private static String setUserStringInput() throws QuitException {
-        String string;
-        string = scanner.nextLine();
-        if (string.equalsIgnoreCase("QUIT")) {
+        String userStringInput;
+        userStringInput = scanner.nextLine();
+        if (userStringInput.equalsIgnoreCase("QUIT")) {
             System.out.println(OPERATION_ABORTED);
             throw new QuitException();
         }
-        return string;
+        return userStringInput;
+
     }
 
 
+
     private static int setUserIntInput(int maxSize) throws QuitException {
-        int index;
+        int userIntInput;
         do{
             System.out.println(ENTER_THE_INDEX);
             while (!scanner.hasNextInt()) {
@@ -423,14 +423,14 @@ public class UserInput {
                 System.out.printf(NOT_A_VALID_CHOICE, input);
                 System.out.println(ENTER_THE_INDEX);
             }
-            index = scanner.nextInt();
+            userIntInput = scanner.nextInt();
 
             scanner.nextLine();
-            if (index < 0 || index > maxSize ) {
-                System.out.printf(NOT_A_VALID_CHOICE, index);
+            if (userIntInput < 0 || userIntInput > maxSize ) {
+                System.out.printf(NOT_A_VALID_CHOICE, userIntInput);
             }
-        } while(index < 0 || index > maxSize);
-        return index;
+        } while(userIntInput < 0 || userIntInput > maxSize);
+        return userIntInput;
     }
 
     private static LocalDate setDueDate() throws QuitException {

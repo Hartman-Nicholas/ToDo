@@ -12,8 +12,6 @@ class ValidatorsTest {
         String date = "1986/12/20";
 
         assertTrue(Validators.isDateValid(date));
-
-
     }
 
     @Test
@@ -33,10 +31,24 @@ class ValidatorsTest {
         assertFalse(Validators.isDateValid(date3));
         assertFalse(Validators.isDateValid(date4));
         assertFalse(Validators.isDateValid(date5));
+    }
 
+    @Test
+    void checkFilePathEndsWithTodo_EndsWithToDo() {
 
+        String filePath = "todo.toDo";
 
-
+        assertTrue(Validators.checkFilePathEndsWithToDo(filePath));
 
     }
+
+    @Test
+    void checkFilePathEndsWithTodo_DoesntEndWithToDo() {
+
+        String filePath = "todo";
+        assertFalse(Validators.checkFilePathEndsWithToDo(filePath));
+
+    }
+
+
 }

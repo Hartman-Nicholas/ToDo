@@ -31,6 +31,10 @@ public class Validators {
 
     }
 
+    public static boolean checkFilePathEndsWithToDo(String filePath) {
+        return filePath.endsWith(".toDo");
+    }
+
 
 
 
