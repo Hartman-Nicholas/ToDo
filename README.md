@@ -3,7 +3,7 @@
 
 ### Introduction
 
-This Java application was developed during the Software Developement Academy (SDA) to practise core Java concepts such as high cohesion, low coupling, method naming, file organisation, abstraction, Java documentation and unit testing. We also practised our useage of GIT and Github.
+This Java application was developed during the Software Development Academy (SDA) to practise core Java concepts such as high cohesion, low coupling, method naming, file organisation, abstraction, Java documentation and unit testing. We also practised our useage of GIT and Github.
 
 ### App description
 
