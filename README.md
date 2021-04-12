@@ -11,7 +11,7 @@ A Command line interface (CLI)  application that allows the user to create a ToD
 
 The ToDo task consists of a Title, Description, Project, Due Date and Status.
 
-The user can then view, modify, and delete a ToDo, they are also able to mark the ToDo as complete or incomplete. In the view list menu they will have the option to sort by due date, sort by project type, filter by complete and incomplete. Once the user has finished entering thier tasks they are able to save thier ToDo list, they will also be able to load a previously saved ToDo list and adjust accordingly.
+The user can then view, modify, and delete a ToDo, they are also able to mark the ToDo as complete or incomplete. In the view list menu they will have the option to sort by due date, sort by project type, filter by complete and incomplete. Once the user has finished entering their tasks they are able to save their ToDo list, they will also be able to load a previously saved ToDo list and adjust accordingly.
 
 
 
